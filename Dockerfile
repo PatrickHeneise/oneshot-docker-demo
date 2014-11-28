@@ -1,12 +1,12 @@
-FROM    centos:centos6
+FROM centos:centos7
 MAINTAINER Patrick Heneise <patrick@blended.io>
 
 # Enable EPEL for Node.js
-RUN     rpm -Uvh http://download.fedoraproject.org/pub/epel/6/i386/epel-release-6-8.noarch.rpm
+RUN rpm -Uvh http://mirror.uv.es/mirror/fedora-epel/7/x86_64/e/epel-release-7-2.noarch.rpm
 
 # Install Node.js and npm
-RUN     yum install -y npm
-RUN     yum install -y ImageMagick ImageMagick-devel
+RUN yum update -y
+RUN yum install -y make GraphicsMagick npm
 
 # Bundle app source
 COPY . /src

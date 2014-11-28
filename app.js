@@ -9,7 +9,6 @@ var config = require('./lib/config'),
   db = Redis.createClient(config.redis.port, config.redis.host, config.redis.options),
   pub = Redis.createClient(config.redis.port, config.redis.host, config.redis.options);
 
-db.auth(config.redis.password);
 
 var start = function start() {
   db.lpop('cats', function (error, next_cat) {
@@ -33,7 +32,10 @@ var start = function start() {
           gm(readStream, 'img.jpg')
             .resize('250', '250', '!')
             .noProfile()
-            .stream(function (err, stdout, stderr) {
+            .stream(function (error, stdout, stderr) {
+              if (error) {
+                console.log(error);
+              }
               stdout.pipe(writeStream);
 
               stdout.on('finish', function () {

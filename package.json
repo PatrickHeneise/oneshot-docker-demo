@@ -3,6 +3,7 @@
   "version": "0.0.1",
   "private": false,
   "author": "Patrick Heneise <patrick@blended.io>",
+  "repository": "https://github.com/PatrickHeneise/oneshot-docker-demo",
   "scripts": {
     "start": "node app.js"
   },
